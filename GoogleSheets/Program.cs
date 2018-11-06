@@ -24,7 +24,7 @@ namespace GoogleSheets
             UserCredential credential;
 
             using (var stream =
-                new FileStream("credentials4.json", FileMode.Open, FileAccess.Read))
+                new FileStream("credentials/credentials4.json", FileMode.Open, FileAccess.Read))
             {
                 string credPath = "token.json";
                 credential = GoogleWebAuthorizationBroker.AuthorizeAsync(
@@ -45,7 +45,7 @@ namespace GoogleSheets
 
             // Define request parameters.
             String spreadsheetId = "1NcH_nkQ6NvobuC6k0e1U0iJFFLk8_Vl5ZxU-t0_Z0Yk";
-            String range = "Sheet1!A1";
+            String range = "Sheet1!A1:C2";
             SpreadsheetsResource.ValuesResource.GetRequest request =
                     service.Spreadsheets.Values.Get(spreadsheetId, range);
 
@@ -71,8 +71,10 @@ namespace GoogleSheets
                 = (SpreadsheetsResource.ValuesResource.UpdateRequest.ValueInputOptionEnum)1;  // TODO: Update placeholder value.
             Data.ValueRange requestBody = new Data.ValueRange();
             List<IList<object>> abc = new List<IList<object>>();
-            IList<object> tmp = new List<object>() { "1" };
+            IList<object> tmp = new List<object>() { "1","abc","222" };
+            IList<object> tmp2 = new List<object>() { "21", "ab2c", "2322" };
             abc.Add(tmp);
+            abc.Add(tmp2);
             requestBody.Values = abc;
             //requestBody.Values = abc as IList<IList<object>>;
             SpreadsheetsResource.ValuesResource.UpdateRequest request2 
